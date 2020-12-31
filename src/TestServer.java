@@ -30,6 +30,9 @@ public class TestServer {
         handler.addServletWithMapping(new ServletHolder(new Stage1()), "/stage1");
         handler.addServletWithMapping(new ServletHolder(new Stage2()), "/stage2");
         handler.addServletWithMapping(new ServletHolder(new Stage3()), "/stage3");
+        //----------------
+        handler.addServletWithMapping(new ServletHolder(new SearchByArtist()), "/SearchByArtist");
+        handler.addServletWithMapping(new ServletHolder(new SearchByAlbum()), "/SearchByAlbum");
         server.setHandler(handler);
 
         server.start();

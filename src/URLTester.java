@@ -1,5 +1,8 @@
 // Illustrates how to do an HTTP GET
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.InputStream;
 import java.io.IOException;
@@ -16,8 +19,9 @@ import java.util.stream.Stream;
 public class URLTester {
 
 
+
     public static void main(String[] args) throws IOException {
-        String urlString = "https://www.wunderground.com/weather/us/ca/san-francisco/37.73,-122.41";
+        String urlString = "https://www.wunderground.com/weather/ZYTL";
 
         URL u = new URL(urlString);
         URLConnection connection = u.openConnection();
@@ -35,8 +39,11 @@ public class URLTester {
         InputStream instream = connection.getInputStream();
         Scanner in = new Scanner(instream);
         while (in.hasNextLine()) {
-            System.out.println(in.nextLine());
+            //System.out.println(in.nextLine());
+            System.out.println(Jsoup.parse(in.nextLine()).text());
         }
+
+
 
     }
 }
